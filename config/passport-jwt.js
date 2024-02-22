@@ -1,28 +1,23 @@
-
-//import { Strategy } from "passport-local";
 const passport = require("passport");
-
 const User = require("../models/User");
-// const { ExtractJwt } = require("passport-jwt");
- var jwtStrategy = require("passport-local").Strategy;
-
+var JwtStrategy = require("passport-jwt").Strategy;
 var ExtractJwt = require("passport-jwt").ExtractJwt;
 
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrkey: "SECRET_KEY",
+  secretOrKey: "SECRET_KEY",
 };
 
 passport.use(
-  new jwtStrategy(opts, function (jwt_Payload, done) {
+  new JwtStrategy(opts, function (jwt_payload, done) {
     User.findOne({ _id: jwt_payload })
       .then((user) => {
         if (user) {
           return done(null, user);
         } else {
-          return done(null.false);
+          return done(null, false);
         }
-      })
+      })  
       .catch((err) => {
         return done(err, false);
       });

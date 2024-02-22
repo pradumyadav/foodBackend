@@ -11,10 +11,9 @@ const db = require("./config/mongoose");
 
 //Import Passport Config.....
 const passport = require("./config/passport-local");
-const passpirtJWT = require("./config/passport-jwt");
+const passportJWT = require("./config/passport-jwt");
 
-
-const routes = require("../FoodBack/Routers/index");
+const routes = require("./Routers/index");
 app.use(
   session({
     secret: "your-secret-key",

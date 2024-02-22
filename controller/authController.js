@@ -42,6 +42,7 @@ exports.signin = async (req, res) => {
   
     try {
       // Find user by email
+      console.log("inside signIn Controller");
       const user = await User.findOne({ email });
   
       if (!user) {

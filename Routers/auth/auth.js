@@ -7,8 +7,8 @@ const { getAllstaff } = require("../../controller/authController");
 
 router
   .post("/signup", registrationValidator, createUser)
-  .post("/signin", passport.authenticate("local"),  signin)
-  .get("/logout", passport.authenticate("jwt"), logout)
+  .post("/signin",   passport.authenticate('local'),  signin)
+  .get("/logout", logout)
   .get("/allstaff", getAllstaff);
 module.exports = router;
         
